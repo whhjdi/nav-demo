@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background:url(./bg1.jpg);
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#main{
+    width:840px;
+    margin: 0px auto;
+    text-align: center;
+}
+kbd{
+    display: inline-block;
+    width: 70px;
+    height: 60px;
+    line-height: 50px;
+    color: #fff;
+    border-radius: 8px;
+    background: #000;
+    font-family: keyboard, "Arial Rounded", Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    text-transform: uppercase;
+    margin: 6px 4px;
+}
+kbd:hover{
+    box-shadow: 2px 2px 10px rgba(252, 252, 252, 1);
+    color: #f15a22;
+}
+.description{
+	margin: 50px auto;
+	width: 300px;
+	color: #fff;
+	font-size: 14px;
+	font-family: "Microsoft YaHei", "微软雅黑";
+}
+.description span{
+	font-weight: bold;
+    color: #fff;
+    font-size: 24px;
+}
+.copyright{
+    position: absolute;
+    bottom:20px;
+	color: #fffef9;
+	font-size: 15px;
+	text-align: center;
+	font-family: "Microsoft YaHei", "微软雅黑";
+}
+.copyright a{
+	color: #fffef9;
+    text-decoration: underline;
+}
+.copyright a:hover{
+    color: #111;
+}
+form{
+    width: 800px;
+    margin: 10px auto;
+    padding: 20px;
+    text-align: center;
+}
+form > a{
+    display: inline-block;
+    padding: 10px;
+    width: 100px;
+    height: 50px;
+    margin-left: 10px;
+    color: #d3d7d4;
+    border-radius: 8px;
+    background: #000;
+    font-family: keyboard, "Arial Rounded", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    text-transform: uppercase;
+}
+form > a:hover{
+    box-shadow: 2px 2px 10px rgba(252, 252, 252, 1);
+    color: #fff;
+    font: bold;
+}
+form > input{
+    outline: none;
+    width: 400px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 18px;
+    border: 4px solid #000;
+    box-sizing: border-box;
+    background:rgba(255, 255, 255, 0.5);
+    display: inline-block;
+    padding-left: 8px;
+    border-radius: 8px;
+}
+input::-webkit-input-placeholder{
+    color:#3e4145;
+}
+input:-moz-placeholder{
+    color:#3e4145;
+}
+input::-moz-placeholder{
+    color:#3e4145;
+}
+input:-ms-input-placeholder{
+    color:#3e4145;
+}
