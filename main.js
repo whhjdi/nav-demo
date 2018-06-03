@@ -43,8 +43,9 @@ function changeBg(imgs) {
     }
 
     function changeBgRandom(imgs) {
-        var index = Math.round(Math.random() * 4);
-        var img = imgs[index];
+        var s = imgs.length - 1
+        var index = Math.round(Math.random() * s);
+        var img = imgs[index]
         setImg(img)
         localStorage.setItem('img', JSON.stringify(img))
     }
@@ -111,7 +112,7 @@ function copyRight() {
     p.setAttribute("class", "copyright");
     p.innerHTML = `Copyright&nbsp;&copy;
         &nbsp;2016-2018&nbsp;
-        沐雪&nbsp;
+        <a href="http://whhjdi.github.io/">沐雪</a>&nbsp;
         版权所有`
     body.appendChild(p);
 }
@@ -256,7 +257,7 @@ function init() {
         n: 'nodejs.org',
         m: 'material-ui.com'
     }
-    var imgs = ['bg1', 'bg2', 'bg3', 'bg4', 'bg5', 'bg6', 'bg7', 'bg8', 'bg9', 'bg10']
+    var imgs = ['bg1', 'bg2', 'bg3', 'bg4', 'bg5', 'bg6', 'bg7', 'bg8', 'bg9', 'bg0']
     var hashInLocalStorage = loadHash('local')
     if (hashInLocalStorage) {
         hash = hashInLocalStorage
