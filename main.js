@@ -2,17 +2,54 @@
 var hashA = init()
 var keys = hashA["keys"]
 var hash = hashA["hash"]
+var imgs = hashA["imgs"]
+var img1 = hashA["img"]
 //生成搜索栏,键盘,说明
 searchBar()
 keyboard(keys, hash)
 createDescription()
 copyRight()
+// 随机换肤
+changeBg(imgs)
 //监听事件
 listenKeyPress(hash)
 listenInputEvent()
 listenSearchEvent()
+window.onload = function () {
+    if (!img1) {
+        img1 = 'bg1'
+        setImg(img1)
+    } else {
+        setImg(img1)
+    }
 
+}
 //下面是工具函数
+
+//换肤
+
+function setImg(img) {
+    document.body.style.backgroundImage = "url(./imgs/" + img + ".jpg)";
+}
+
+function changeBg(imgs) {
+    var body = document.querySelector('body')
+    var div = document.createElement('div')
+    body.appendChild(div)
+    div.textContent = '炫彩换肤'
+    div.className = "changeBg"
+    div.onclick = function () {
+        changeBgRandom(imgs)
+    }
+
+    function changeBgRandom(imgs) {
+        var index = Math.round(Math.random() * 4);
+        var img = imgs[index];
+        setImg(img)
+        localStorage.setItem('img', JSON.stringify(img))
+    }
+}
+
 function searchBar() {
     var form = document.querySelector('form')
     var input = document.createElement('input')
@@ -63,7 +100,8 @@ function createDescription() {
         1. 鼠标单击相应字母可打开对应页面<br>
         2. 鼠标双击可自定义网址(直接输入域名即可)<br>
         3. 鼠标双击后输入 0 可以取消绑定<br>
-        4. 鼠标放在相应字母上可查看对应的网址 `
+        4. 鼠标放在相应字母上可查看对应的网址 <br>
+        5. 新增换肤功能,让你的每一次浏览都赏心悦目!`
     body.appendChild(p);
 }
 
@@ -73,7 +111,7 @@ function copyRight() {
     p.setAttribute("class", "copyright");
     p.innerHTML = `Copyright&nbsp;&copy;
         &nbsp;2016-2018&nbsp;
-        沐雪&nbsp;<a href='https://whhjdi.github.io/' target='_blank'>我的博客</a>&nbsp;
+        沐雪&nbsp;
         版权所有`
     body.appendChild(p);
 }
@@ -133,17 +171,21 @@ function keyboard(keys, hash) {
 
 function listenKeyPress(hash) {
     var input = document.querySelector('input')
+    var kbds = document.querySelectorAll('kbd')
     document.onkeypress = function (e) {
         if (!input.getAttribute("autofocus")) {
             var key = e['key']
-            var website = hash[key]
-            if (website === '0') {
-                alert('亲!请双击绑定网址哦')
-            } else {
-                window.open('http://' + website, '_blank')
+            if (hash[key]) {
+                var website = hash[key]
+                console.log(e['key'])
+                if (website === '0') {
+                    alert('亲!请双击绑定网址哦')
+                } else {
+                    window.open('http://' + website, '_blank')
+                }
             }
-        }
 
+        }
     }
 }
 
@@ -214,15 +256,23 @@ function init() {
         n: 'nodejs.org',
         m: 'material-ui.com'
     }
+    var imgs = ['bg1', 'bg2', 'bg3', 'bg4', 'bg5', 'bg6', 'bg7', 'bg8', 'bg9', 'bg10']
     var hashInLocalStorage = loadHash('local')
-    if(hashInLocalStorage){
+    if (hashInLocalStorage) {
         hash = hashInLocalStorage
+    }
+    var img = loadHash('img')
+    if (img) {
+        img = img
     }
     return {
         "keys": keys,
-        "hash": hash
+        "hash": hash,
+        "imgs": imgs,
+        "img": img
     }
 }
+
 function loadHash(name) {
     return JSON.parse(localStorage.getItem(name) || 'null')
 }
