@@ -29,7 +29,7 @@ window.onload = function () {
 //换肤
 
 function setImg(img) {
-    document.body.style.backgroundImage = "url(./imgs/" + img + ".jpg)";
+    document.body.style.backgroundImage = "url(http://paahiebgs.bkt.clouddn.com/" + img + ".jpg)";
 }
 
 function changeBg(imgs) {
@@ -72,7 +72,7 @@ function listenInputEvent() {
     body.onclick = function (e) {
         e.target.localName == "input" ? input.setAttribute("autofocus", "autofocus") : input.removeAttribute("autofocus");
     }
-    input.onkeydown = function(e){
+    input.onkeydown = function (e) {
         if (e.keyCode == "13") {
             var search = document.querySelector('input').value
             if (search) {
@@ -85,7 +85,7 @@ function listenInputEvent() {
 
 function listenSearchEvent() {
     var searchButton = document.querySelectorAll('form>a')
-    
+
     for (var i = 0; i < searchButton.length; i++) {
         searchButton[i].onclick = function (e) {
             var search = document.querySelector('input').value
@@ -94,7 +94,7 @@ function listenSearchEvent() {
                     window.open("//" + "www.baidu.com/s?wd=" + search)
                 } else if (e.target.id === "google") {
                     window.open("//" + "www.google.com/search?q=" + search)
-                } 
+                }
             } else {
                 alert("请输入您想搜索的内容")
             }
@@ -181,8 +181,6 @@ function keyboard(keys, hash) {
 
 function listenKeyPress(hash) {
     var input = document.querySelector('input')
-    var kbds = document.querySelectorAll('kbd')
-    var search = document.querySelector('input').value
     document.onkeypress = function (e) {
         console.log(e.keyCode)
         if (!input.getAttribute("autofocus")) {
@@ -277,10 +275,10 @@ function init() {
         img = img
     }
     return {
-        "keys": keys,
-        "hash": hash,
-        "imgs": imgs,
-        "img": img
+        keys,
+        hash,
+        imgs,
+        img
     }
 }
 
