@@ -29,7 +29,7 @@ window.onload = function () {
 //换肤
 
 function setImg(img) {
-    document.body.style.backgroundImage = "url(http://paahiebgs.bkt.clouddn.com/" + img + ".jpg)";
+    document.body.style.backgroundImage = "url(./imgs/" + img + ".jpg)";
 }
 
 function changeBg(imgs) {
